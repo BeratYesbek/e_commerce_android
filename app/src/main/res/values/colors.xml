@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">#0275d8</color>
+    <color name="successColor">#5cb85c</color>
+    <color name="infoColor">#5bc0de</color>
+    <color name="warningColor">#f0ad4e</color>
+    <color name="dangerColor">#d9534f</color>
+    <color name="fadedColor">#f7f7f7</color>
+    <color name="darkColor">#292b2c</color>
+</resources>
