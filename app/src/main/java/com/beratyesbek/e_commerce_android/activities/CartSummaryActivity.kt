@@ -34,6 +34,7 @@ class CartSummaryActivity : AppCompatActivity(),IOnClickLister<CartSummaryDto>  
         })
         dataBinding.btnPayment.setOnClickListener {
             val intentToPaymentActivity  = Intent(this,PaymentActivity::class.java)
+            intentToPaymentActivity.putParcelableArrayListExtra("cartSummaryList",cartSummaryDtoList)
             startActivity(intentToPaymentActivity)
         }
     }

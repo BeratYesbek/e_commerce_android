@@ -1,7 +1,10 @@
 package com.beratyesbek.e_commerce_android.models
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Product(
     @SerializedName("productName")
     val productName : String?,
@@ -17,7 +20,7 @@ data class Product(
     val colorId : Number?,
     @SerializedName("categoryId")
     val categoryId : Number?,
-) : IEntity {
+) : IEntity ,Parcelable{
 
 
 }

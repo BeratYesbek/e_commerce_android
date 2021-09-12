@@ -1,11 +1,13 @@
 package com.beratyesbek.e_commerce_android.models
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 import java.util.*
-
+@Parcelize
 data class Payment(
     @SerializedName("paymentId")
-    var paymentId: Number,
+    var paymentId: Number?,
     @SerializedName("cardNumber")
     var cardNumber: String,
     @SerializedName("cardHolderName")
@@ -25,12 +27,13 @@ data class Payment(
     @SerializedName("cartSummaryId")
     var cartSummaryId: Number,
     @SerializedName("totalPrice")
-    var totalPrice: Float,
+    var totalPrice: Int,
     @SerializedName("date")
     var date: Date,
     @SerializedName("email")
     var email: String
-) : IEntity {
+) : IEntity,Parcelable {
+
 
 
 }

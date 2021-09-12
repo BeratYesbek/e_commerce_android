@@ -1,11 +1,14 @@
 package com.beratyesbek.e_commerce_android.models.dtos
 
+import android.os.Parcelable
 import com.beratyesbek.e_commerce_android.models.Brand
 import com.beratyesbek.e_commerce_android.models.Category
 import com.beratyesbek.e_commerce_android.models.Color
 import com.beratyesbek.e_commerce_android.models.Product
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class CartSummaryDto(
     @SerializedName("id")
     val  id : Number ,
@@ -24,5 +27,5 @@ data class CartSummaryDto(
     @SerializedName("images")
     val images : List<String>
 
-) {
+) : Parcelable{
 }

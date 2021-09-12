@@ -13,7 +13,7 @@ open class Api {
         // S is a service T is a model
         // for example url = https://localhost:44303/api/products or categories or students
         inline fun <reified S, reified T : IEntity> api(): S {
-            var baseUrl = "https://7502-88-226-105-98.ngrok.io/api/"
+            var baseUrl = "https://0434-88-226-105-98.ngrok.io/api/"
 
             //When we send request to API must put the model name, but some model name might end with 'y' character.
             // we always use plural name in API that's way if it was ended with 'y' character we need to remove 'y' and we need to put 'ies' end of the model name

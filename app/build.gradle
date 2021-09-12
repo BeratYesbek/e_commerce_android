@@ -21,6 +21,9 @@ android {
     buildFeatures {
         dataBinding true
     }
+    androidExtensions {
+        experimental = true
+    }
 
     buildTypes {
         release {
