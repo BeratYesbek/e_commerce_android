@@ -1,6 +1,7 @@
 package com.beratyesbek.e_commerce_android.services.cartSummaryService
 
 import com.beratyesbek.e_commerce_android.models.CartSummary
+import com.beratyesbek.e_commerce_android.models.dtos.CartSummaryDto
 import com.beratyesbek.e_commerce_android.services.Api
 import com.beratyesbek.e_commerce_android.utilities.response.ListResponseModel
 import com.beratyesbek.e_commerce_android.utilities.response.ResponseModel
@@ -21,7 +22,7 @@ class CartSummaryService : ICartSummaryService {
     }
 
     override fun delete(entity: CartSummary): Single<ResponseModel> {
-        TODO("Not yet implemented")
+        return api.delete(entity)
     }
 
     override fun getById(id: Number): Single<SingleResponseModel<CartSummary>> {
@@ -34,5 +35,9 @@ class CartSummaryService : ICartSummaryService {
 
     override fun getAllByUserId(id: Number): Single<ListResponseModel<CartSummary>> {
       return api.getAllByUserId(id)
+    }
+
+    override fun getCartSummaryDetailByUserId(userId: Number): Single<ListResponseModel<CartSummaryDto>> {
+        return api.getCartSummaryDetailByUserId(userId)
     }
 }

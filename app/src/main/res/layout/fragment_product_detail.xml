@@ -1,63 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ProductDetailFragment">
-
-    <com.google.android.material.slider.Slider
+<layout>
+    <data>
+        <variable
+            name="productDto"
+            type="com.beratyesbek.e_commerce_android.models.dtos.ProductDto" />
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="300dp">
-
-    </com.google.android.material.slider.Slider>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_height="match_parent">
+        android:background="#fff"
+        tools:context=".fragments.ProductDetailFragment">
 
-        <TextView
-            android:id="@+id/textView_product_name"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Playstation 5"
-            android:textColor="#000"
-            android:padding="5dp"
-            android:layout_margin="5dp"
-            android:textSize="18dp"
-            android:textStyle="bold">
-        </TextView>
-        <TextView
-            android:id="@+id/textView_product_brandName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sony"
-            android:textColor="@color/primaryColor"
-            android:paddingLeft="5dp"
-            android:layout_marginLeft="5dp"
-            android:textSize="16dp"
-            android:textStyle="bold">
-        </TextView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Description:"
-            android:textColor="@color/dangerColor"
-            android:padding="5dp"
-            android:layout_margin="5dp"
-            android:textSize="15dp"
-            android:textStyle="bold">
-        </TextView>
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="dasokdsakdosa doaskopd sak dpsakopasp kdsakodkasop opasdop"
-            android:textColor="@color/darkColor"
-            android:padding="5dp"
-            android:layout_marginLeft="5dp">
-        </TextView>
+            <ImageView
+                android:id="@+id/imageView_product_image"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:downloadUrl='@{"https://7502-88-226-105-98.ngrok.io" + productDto.images[0]}'
+                />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textView_product_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:text="@{productDto.productName}"
+                    android:textColor="#000"
+                    android:textSize="18dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/imageView_product_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="185dp"
+                    android:padding="5dp"
+                    android:textColor="#000"
+                    android:textSize="20dp"/>
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/ic_star" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView_product_brandName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:paddingLeft="5dp"
+                android:text="@{productDto.brandName}"
+                android:textColor="@color/primaryColor"
+                android:textSize="16dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:text="Description:"
+                android:textColor="@color/dangerColor"
+                android:textSize="15dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:padding="5dp"
+                android:text="@{productDto.productDescription}"
+                android:textColor="@color/darkColor"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:padding="5dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:text="@{productDto.productPrice.toString()+'$'}"
+                android:textColor="@color/darkColor"/>
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btn_add_to_cart"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/custom_success_button"
+                android:text="Add To Cart"
+                android:textColor="#fff"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="5dp"
+                />
+        </RelativeLayout>
     </LinearLayout>
-</LinearLayout>
+</layout>

@@ -7,20 +7,22 @@ import com.beratyesbek.e_commerce_android.models.CartSummary
 import com.beratyesbek.e_commerce_android.models.dtos.ProductDto
 import com.beratyesbek.e_commerce_android.services.cartSummaryService.CartSummaryService
 import com.beratyesbek.e_commerce_android.services.productService.ProductManager
-import com.beratyesbek.e_commerce_android.utilities.response.ListResponseModel
 import com.beratyesbek.e_commerce_android.utilities.response.ResponseModel
+import com.beratyesbek.e_commerce_android.utilities.response.SingleResponseModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.CoroutineScope
 
-open class ProductViewModel(application: Application)  : BaseViewModel(application){
+class ProductDetailViewModel(application: Application) : BaseViewModel(application),
+    CoroutineScope {
 
-    val productDtoList =  MutableLiveData<List<ProductDto>>()
-    val cartSummaryList = MutableLiveData<List<CartSummary>>()
+    val productDto = MutableLiveData<ProductDto>()
     private val productManager = ProductManager()
-    private val cartSummaryService  = CartSummaryService()
-    private val disposable  = CompositeDisposable()
+    private val cartSummaryService = CartSummaryService()
+    private val disposable = CompositeDisposable()
+
 
     fun addCartSummary(cartSummary: CartSummary){
         disposable.add(
@@ -29,10 +31,8 @@ open class ProductViewModel(application: Application)  : BaseViewModel(applicati
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object :DisposableSingleObserver<ResponseModel>(){
                     override fun onSuccess(t: ResponseModel) {
-                        Toast.makeText(getApplication(),"Product has been added into cart",Toast.LENGTH_LONG).show()
-                        getCartSummaryByUserId()
+                        Toast.makeText(getApplication(),"Product has been added into cart", Toast.LENGTH_LONG).show()
                     }
-
                     override fun onError(e: Throwable) {
                         print(e.message)
                     }
@@ -41,42 +41,21 @@ open class ProductViewModel(application: Application)  : BaseViewModel(applicati
         )
     }
 
-    fun getCartSummaryByUserId(){
+    fun getProductDtoById(id: Number) {
         disposable.add(
-            cartSummaryService.getAllByUserId(1)
+            productManager.getProductDetailById(id)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object: DisposableSingleObserver<ListResponseModel<CartSummary>>(){
-                    override fun onSuccess(t: ListResponseModel<CartSummary>) {
-                        if (t.success){
-                            cartSummaryList.value = t.data!!
+                .subscribeWith(object :
+                    DisposableSingleObserver<SingleResponseModel<ProductDto>>() {
+                    override fun onSuccess(t: SingleResponseModel<ProductDto>) {
+                        if (t.success) {
+                            productDto.value = t.data!!
                         }
                     }
-
                     override fun onError(e: Throwable) {
                         print(e.message)
                     }
-
-                })
-        )
-    }
-
-    fun getAllProductDetail(){
-        disposable.add(
-            productManager.getAllProductDetail()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object: DisposableSingleObserver<ListResponseModel<ProductDto>>(){
-                    override fun onSuccess(t: ListResponseModel<ProductDto>) {
-                        if (t.success){
-                           productDtoList.value = t.data!!
-                        }
-                    }
-
-                    override fun onError(e: Throwable) {
-                        print(e.message)
-                    }
-
                 })
         )
     }

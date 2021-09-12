@@ -1,19 +1,12 @@
 package com.beratyesbek.e_commerce_android.services.productService
 
-import com.beratyesbek.e_commerce_android.models.Country
-import com.beratyesbek.e_commerce_android.models.IEntity
 import com.beratyesbek.e_commerce_android.models.Product
 import com.beratyesbek.e_commerce_android.models.dtos.ProductDto
 import com.beratyesbek.e_commerce_android.services.Api
-import com.beratyesbek.e_commerce_android.services.IServiceRepository
 import com.beratyesbek.e_commerce_android.utilities.response.ListResponseModel
 import com.beratyesbek.e_commerce_android.utilities.response.ResponseModel
 import com.beratyesbek.e_commerce_android.utilities.response.SingleResponseModel
 import io.reactivex.Single
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.POST
 
 open class ProductManager : IProductService {
 
@@ -31,6 +24,10 @@ open class ProductManager : IProductService {
 
     override fun getById(id: Number): Single<SingleResponseModel<Product>> {
         return api.getById(id)
+    }
+
+    override fun getProductDetailById(id: Number): Single<SingleResponseModel<ProductDto>> {
+        return api.getProductDetailById(id)
     }
 
     override fun add(entity: Product): Single<ResponseModel> {

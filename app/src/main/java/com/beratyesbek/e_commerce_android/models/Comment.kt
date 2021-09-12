@@ -2,7 +2,7 @@ package com.beratyesbek.e_commerce_android.models
 
 import com.google.gson.annotations.SerializedName
 
-class Comment(
+data class Comment(
     @SerializedName("id")
     val id: Number,
     @SerializedName("userId")

@@ -2,6 +2,7 @@ package com.beratyesbek.e_commerce_android.services.cartSummaryService
 
 import com.beratyesbek.e_commerce_android.models.CartSummary
 import com.beratyesbek.e_commerce_android.models.Product
+import com.beratyesbek.e_commerce_android.models.dtos.CartSummaryDto
 import com.beratyesbek.e_commerce_android.models.dtos.ProductDto
 import com.beratyesbek.e_commerce_android.utilities.response.ListResponseModel
 import com.beratyesbek.e_commerce_android.utilities.response.ResponseModel
@@ -30,5 +31,8 @@ interface ICartSummaryService {
 
     @GET("getAllByUserId")
     fun getAllByUserId(@Query("id") id: Number): Single<ListResponseModel<CartSummary>>
+
+    @GET("getCartSummaryDetailByUserId")
+    fun getCartSummaryDetailByUserId(@Query("userId") userId: Number): Single<ListResponseModel<CartSummaryDto>>
 
 }

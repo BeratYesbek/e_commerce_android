@@ -2,8 +2,8 @@
 <layout>
     <data >
         <variable
-            name="productDto"
-            type="com.beratyesbek.e_commerce_android.models.dtos.ProductDto" />
+            name="cartSummaryDto"
+            type="com.beratyesbek.e_commerce_android.models.dtos.CartSummaryDto" />
     </data>
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
                 android:id="@+id/productImage"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:downloadUrl='@{"https://7502-88-226-105-98.ngrok.io" + productDto.images[0]}'
+                android:downloadUrl='@{"https://7502-88-226-105-98.ngrok.io" + cartSummaryDto.images[0]}'
                 android:src="@mipmap/ic_launcher_round"/>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
                     android:id="@+id/textView_product_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{productDto.productName.toUpperCase()}"
+                    android:text="@{cartSummaryDto.product.productName.toUpperCase()}"
                     android:textColor="#000"
                     android:textSize="18dp"
                     android:textStyle="bold"
@@ -46,7 +46,7 @@
                     android:id="@+id/textView_product_brand"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{productDto.brandName}"
+                    android:text="@{cartSummaryDto.brand.brandName}"
                     android:textColor="@android:color/darker_gray"
                     android:textSize="12dp"
                     android:layout_below="@id/textView_product_title"
@@ -72,7 +72,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        android:text="@{productDto.productPrice.toString() +'$'}"
+                        android:text="@{cartSummaryDto.product.productPrice.toString() +'$'}"
                         android:textColor="#000"
                         android:layout_toEndOf="@id/textView_product_price_text"
                         android:textSize="15dp"
@@ -83,29 +83,12 @@
                     android:layout_height="wrap_content"
 
                     >
-                    <Button
-                        android:id="@+id/btn_add_cartSummary"
-                        android:layout_width="80dp"
-                        android:layout_height="35dp"
-                        android:layout_margin="5dp"
-                        android:text="add cart"
-                        android:textSize="9dp"
-                        android:textColor="#fff"
-                        android:drawablePadding="-10dp"
-                        android:paddingLeft="5dp"
-                        android:drawableStart="@drawable/ic_shopping_cart_white"
-                        android:background="@drawable/custom_primary_button"
-
-                        />
-                    <Button
-                        android:id="@+id/btn_see_detail"
-                        android:layout_width="80dp"
-                        android:layout_height="35dp"
-                        android:layout_margin="5dp"
-                        android:textSize="9dp"
-                        android:text="see detail"
-                        android:textColor="#fff"
-                        android:background="@drawable/custom_success_button"
+                    <ImageButton
+                        android:id="@+id/btn_remove_product"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/ic_close_red"
+                        android:layout_marginLeft="15dp"
                         />
                 </LinearLayout>
             </LinearLayout>
