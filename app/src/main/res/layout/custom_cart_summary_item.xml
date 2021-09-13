@@ -22,7 +22,7 @@
                 android:id="@+id/productImage"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:downloadUrl='@{"https://0434-88-226-105-98.ngrok.io" + cartSummaryDto.images[0]}'
+                android:downloadUrl='@{"https://68e3-88-226-106-44.ngrok.io" + cartSummaryDto.images[0]}'
                 android:src="@mipmap/ic_launcher_round"/>
             <LinearLayout
                 android:layout_width="wrap_content"

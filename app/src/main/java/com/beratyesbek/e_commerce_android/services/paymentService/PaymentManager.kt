@@ -10,7 +10,7 @@ import io.reactivex.Single
 class PaymentManager : IPaymentService {
 
     private val api = Api.api<IPaymentService, Payment>()
-    override fun add(entity: List<Payment>): Single<ResponseModel> {
+    override fun add(entity: ArrayList<Payment>): Single<ResponseModel> {
         return api.add(entity)
     }
 

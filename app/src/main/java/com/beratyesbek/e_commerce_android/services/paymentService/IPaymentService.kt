@@ -15,7 +15,7 @@ import retrofit2.http.Query
 interface IPaymentService  {
 
     @POST("add")
-    fun add(@Body entity: List<Payment>): Single<ResponseModel>
+    fun add(@Body entity: ArrayList<Payment>): Single<ResponseModel>
 
     @POST("update")
     fun update(@Body entity: Payment): Single<ResponseModel>

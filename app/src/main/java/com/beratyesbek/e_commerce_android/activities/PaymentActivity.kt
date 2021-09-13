@@ -17,16 +17,17 @@ import com.beratyesbek.e_commerce_android.fragments.DatePickerFragment
 import com.beratyesbek.e_commerce_android.models.Payment
 import com.beratyesbek.e_commerce_android.models.dtos.CartSummaryDto
 import com.beratyesbek.e_commerce_android.mvvm.PaymentViewModel
+import java.sql.SQLSyntaxErrorException
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import kotlin.collections.ArrayList
 
 
-class PaymentActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener  {
+class PaymentActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
     private val cartSummaryList = ArrayList<CartSummaryDto>()
     private lateinit var dataBinding: ActivityPaymentBinding
-    private val viewModel :PaymentViewModel by viewModels()
+    private val viewModel: PaymentViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +40,7 @@ class PaymentActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener 
 
     }
 
-    fun payment(view :View){
+    fun payment(view: View) {
         val cardHolderName = dataBinding.textviewPaymentActivityCardHolderName.text.toString()
         val cardNumber = dataBinding.textviewPaymentActivityCardNumber.text.toString()
         val cvv = dataBinding.textviewPaymentActivityCvv.text.toString().toInt()
@@ -51,14 +52,27 @@ class PaymentActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener 
 
         val paymentList = ArrayList<Payment>()
 
-        if (cartSummaryList != null){
-            for (item in cartSummaryList){
-                val payment = Payment(null,cardNumber
-                    ,cardHolderName,expiryDate,cvv,1,address,phone,item.productId,item.id,item.product.productPrice!!,current,email
+        if (cartSummaryList.size > 0) {
+            for (item in cartSummaryList) {
+                val payment = Payment(
+                    null,
+                    cardNumber,
+                    cardHolderName,
+                    expiryDate,
+                    cvv,
+                    1,
+                    address,
+                    phone,
+                    item.productId,
+                    item.id,
+                    item.product.productPrice!!,
+                    current,
+                    email
                 )
                 paymentList.add(payment)
             }
             viewModel.add(paymentList)
+
 
         }
 

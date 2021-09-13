@@ -53,6 +53,7 @@
                 android:layout_marginLeft="60dp"
                 android:background="@drawable/custom_primary_button"
                 android:text="Sign In"
+                android:onClick="login"
                 android:textColor="#fff"
                 />
             <Button

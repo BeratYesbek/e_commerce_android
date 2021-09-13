@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.E_commerce_android">
         <activity
+            android:name=".activities.RegisterActivity"
+            android:exported="true" />
+        <activity
             android:name=".activities.PaymentActivity"
             android:exported="true" />
         <activity
