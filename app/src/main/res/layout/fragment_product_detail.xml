@@ -23,7 +23,7 @@
                 android:id="@+id/imageView_product_image"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:downloadUrl='@{"https://68e3-88-226-106-44.ngrok.io" + productDto.images[0]}'
+                android:downloadUrl='@{"https://7d36-88-226-106-44.ngrok.io" + productDto.images[0]}'
                 />
 
             <LinearLayout

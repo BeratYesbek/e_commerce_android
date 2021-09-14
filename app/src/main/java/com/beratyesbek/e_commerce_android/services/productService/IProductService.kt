@@ -5,11 +5,14 @@ import com.beratyesbek.e_commerce_android.models.dtos.ProductDto
 import com.beratyesbek.e_commerce_android.utilities.response.ListResponseModel
 import com.beratyesbek.e_commerce_android.utilities.response.ResponseModel
 import com.beratyesbek.e_commerce_android.utilities.response.SingleResponseModel
+import com.beratyesbek.e_commerce_android.utilities.sharedPreferences.SharedPreferencesToken
 import io.reactivex.Single
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.Query
 
 interface IProductService {
+
 
     fun add(entity: Product): Single<ResponseModel>
 

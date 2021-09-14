@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class AuthService : IAuthService {
 
-    private val api = Retrofit.Builder().baseUrl(Api.BASE_URL + "auth")
+    private val api = Retrofit.Builder().baseUrl(Api.BASE_URL + "auth/")
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
