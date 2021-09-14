@@ -6,7 +6,7 @@ import java.util.*
 data class AccessToken(
     @SerializedName("token")
     val token :String,
-    @SerializedName("date")
+    @SerializedName("expiration")
     val date : Date,
     @SerializedName("user")
     val user:User

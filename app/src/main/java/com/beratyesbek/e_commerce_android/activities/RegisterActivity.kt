@@ -21,6 +21,7 @@ import io.reactivex.schedulers.Schedulers
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var dataBinding: ActivityRegisterBinding
+    private val viewModel: RegisterViewModel by viewModels()
     private val authService = AuthService()
     private val disposable = CompositeDisposable()
     private val customSharedPreferences = CustomSharedPreferences(this)
@@ -30,43 +31,25 @@ class RegisterActivity : AppCompatActivity() {
         val view = dataBinding.root
         setContentView(view)
 
+        viewModel.result.observe(this, { result ->
+            if (result) {
+                val registerActivity = Intent(this, ProductActivity::class.java)
+                startActivity(registerActivity)
+                finish()
+            }
+
+        })
+
         dataBinding.btnSignUp.setOnClickListener {
             val firstName = dataBinding.editTextFirstName.text.toString()
             val lastName = dataBinding.editTextLastName.text.toString()
             val password = dataBinding.editTextPassword.text.toString()
             val email = dataBinding.editTextEmail.text.toString()
 
-            register(UserForRegisterDto(email, password, firstName, lastName))
+            viewModel.register(UserForRegisterDto(email, password, firstName, lastName))
         }
 
-
     }
 
 
-    fun register(registerDto: UserForRegisterDto) {
-        disposable.add(
-            authService.register(registerDto)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object :
-                    DisposableSingleObserver<SingleResponseModel<AccessToken>>() {
-                    override fun onSuccess(t: SingleResponseModel<AccessToken>) {
-                        if (t.success) {
-                            customSharedPreferences.saveToken(t.data!!)
-                            val intentToProductActivity =
-                                Intent(this@RegisterActivity, ProductActivity::class.java)
-                            startActivity(intentToProductActivity)
-                        } else {
-                            Toast.makeText(this@RegisterActivity, t.message, Toast.LENGTH_LONG)
-                                .show()
-                        }
-                    }
-
-                    override fun onError(e: Throwable) {
-                        System.out.println(e.message)
-                    }
-
-                })
-        )
-    }
 }

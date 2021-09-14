@@ -4,7 +4,7 @@ import java.util.*
 
 class SharedPreferencesToken {
     companion object {
-        var token = ""
+        var token : String? = ""
         var userId : Number? = null
         var date : Date? = null
     }

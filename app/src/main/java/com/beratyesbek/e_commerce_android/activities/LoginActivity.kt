@@ -48,6 +48,11 @@ class LoginActivity : AppCompatActivity() {
             val password = dataBinding.editTextLoginActivityPassword.text.toString()
             viewModel.login(UserForLoginDto(email, password))
         }
+
+        dataBinding.btnLoginActivitySignUp.setOnClickListener {
+            val intentToRegisterActivity = Intent(this,RegisterActivity::class.java)
+            startActivity(intentToRegisterActivity)
+        }
     }
 
 

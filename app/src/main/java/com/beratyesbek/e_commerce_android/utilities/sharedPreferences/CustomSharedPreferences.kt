@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import androidx.core.content.edit
 import com.beratyesbek.e_commerce_android.models.AccessToken
+import java.util.*
 
 class CustomSharedPreferences {
 
@@ -32,12 +33,19 @@ class CustomSharedPreferences {
     fun saveToken(accessToken: AccessToken) {
         sharedPreferences?.edit(commit = true) {
             putString("token", accessToken.token)
-            putString("date", accessToken.date.toString())
+            val date = Date.parse(accessToken.date.toString())
+            putLong("expiration", date)
             putInt("userId", accessToken.user.userId)
         }
     }
 
+    fun removeToken() = sharedPreferences?.edit(commit = true) {
+        remove("token")
+        remove("expiration")
+        remove("userId")
+    }
+
     fun getToken() = sharedPreferences?.getString("token", "")
     fun getUserId() = sharedPreferences?.getInt("userId", 0)
-    fun getDate() = sharedPreferences?.getString("date", "")
+    fun getDate() = sharedPreferences?.getLong("expiration", 0)
 }
