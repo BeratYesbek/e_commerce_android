@@ -1,5 +1,5 @@
 # e_commerce_android
-This android app has been supported with e_commerce_backend. Retrofit, dataBinding, ViewModel Coroutine, jetpack library and more technic has been used
+This android app has been supported with e_commerce_backend. RETROFIT, DATA BINDING, VIEW MODEL COROUTINE, DAGGER HILT  and more technic has been used
 
 ### Description:
 In this project has an  ecommerce mobile application infrastructure. in here has been used Android jetpack library. this project has been developed  following the SOLID rules and best practices. 
