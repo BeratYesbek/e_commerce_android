@@ -5,7 +5,7 @@ This android app has been supported with e_commerce_backend. Retrofit, dataBindi
 In this project has an  ecommerce mobile application infrastructure. in here has been used Android jetpack library. this project has been developed  following the SOLID rules and best practices. 
 
 ### Authorization
-In this project authorization connect with e-commerce-backend repository for exampla If you log in, access token is coming  from API. Access token save to shared preferences. Whenever make a request to API we put the token in header through interceptor
+Auth is connected with e-commerce-backend. For example, If You log in system. Backend will give an access token. Whenever you make a request, we put the token in headers through with interceptor And backend make an auth that's way
 
 <img src="https://user-images.githubusercontent.com/77804034/133403049-0f1d1072-195c-4906-80c6-9e18f6539780.jpeg" width="500" height="850">
 
