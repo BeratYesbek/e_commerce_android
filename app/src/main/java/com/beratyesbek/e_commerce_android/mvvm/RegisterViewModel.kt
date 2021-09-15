@@ -5,16 +5,23 @@ import androidx.lifecycle.MutableLiveData
 import com.beratyesbek.e_commerce_android.models.AccessToken
 import com.beratyesbek.e_commerce_android.models.dtos.UserForRegisterDto
 import com.beratyesbek.e_commerce_android.services.authService.AuthService
+import com.beratyesbek.e_commerce_android.services.authService.IAuthService
 import com.beratyesbek.e_commerce_android.utilities.response.SingleResponseModel
 import com.beratyesbek.e_commerce_android.utilities.sharedPreferences.CustomSharedPreferences
 import com.beratyesbek.e_commerce_android.utilities.sharedPreferences.SharedPreferencesToken
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class RegisterViewModel(application: Application) : BaseViewModel(application) {
-    private val authService = AuthService()
+@HiltViewModel
+class RegisterViewModel @Inject constructor(
+    application: Application,
+    private val authService : IAuthService
+    ) : BaseViewModel(application) {
+
     private val disposable = CompositeDisposable()
     val result = MutableLiveData<Boolean>()
     private val customSharedPreferences = CustomSharedPreferences(application)

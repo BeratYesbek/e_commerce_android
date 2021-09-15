@@ -11,7 +11,9 @@ import com.beratyesbek.e_commerce_android.databinding.ActivityCartSummaryBinding
 import com.beratyesbek.e_commerce_android.models.dtos.CartSummaryDto
 import com.beratyesbek.e_commerce_android.mvvm.CartSummaryViewModel
 import com.beratyesbek.e_commerce_android.utilities.IOnClickLister
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CartSummaryActivity : AppCompatActivity(),IOnClickLister<CartSummaryDto>  {
 
     private lateinit var dataBinding: ActivityCartSummaryBinding

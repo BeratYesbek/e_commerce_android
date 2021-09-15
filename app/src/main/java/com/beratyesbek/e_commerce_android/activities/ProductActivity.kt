@@ -17,7 +17,9 @@ import com.beratyesbek.e_commerce_android.models.dtos.ProductDto
 import com.beratyesbek.e_commerce_android.mvvm.ProductViewModel
 import com.beratyesbek.e_commerce_android.utilities.IOnClickLister
 import com.beratyesbek.e_commerce_android.utilities.OnPassData
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProductActivity : AppCompatActivity(), IOnClickLister<ProductDto>, OnPassData<CartSummary> {
 
     private lateinit var dataBinding: ActivityProductBinding

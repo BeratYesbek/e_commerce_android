@@ -5,18 +5,17 @@ import android.widget.Toast
 import com.beratyesbek.e_commerce_android.models.CartSummary
 import com.beratyesbek.e_commerce_android.models.Payment
 import com.beratyesbek.e_commerce_android.services.cartSummaryService.CartSummaryService
-import com.beratyesbek.e_commerce_android.services.paymentService.PaymentManager
+import com.beratyesbek.e_commerce_android.services.paymentService.PaymentService
 import com.beratyesbek.e_commerce_android.utilities.response.ResponseModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 
 class PaymentViewModel(application: Application) : BaseViewModel(application), CoroutineScope {
 
-    private val paymentService = PaymentManager()
+    private val paymentService = PaymentService()
     private val cartSummaryService = CartSummaryService()
     private val disposable = CompositeDisposable()
 

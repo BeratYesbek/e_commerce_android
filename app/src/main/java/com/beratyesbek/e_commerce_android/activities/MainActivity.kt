@@ -14,7 +14,9 @@ import com.beratyesbek.e_commerce_android.R
 import com.beratyesbek.e_commerce_android.mvvm.MainViewModel
 import com.beratyesbek.e_commerce_android.utilities.connections.NetworkConnection
 import com.beratyesbek.e_commerce_android.utilities.sharedPreferences.CustomSharedPreferences
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val viewModel : MainViewModel by viewModels()

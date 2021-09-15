@@ -6,21 +6,30 @@ import androidx.lifecycle.MutableLiveData
 import com.beratyesbek.e_commerce_android.models.CartSummary
 import com.beratyesbek.e_commerce_android.models.dtos.ProductDto
 import com.beratyesbek.e_commerce_android.services.cartSummaryService.CartSummaryService
-import com.beratyesbek.e_commerce_android.services.productService.ProductManager
+import com.beratyesbek.e_commerce_android.services.cartSummaryService.ICartSummaryService
+import com.beratyesbek.e_commerce_android.services.productService.IProductService
+import com.beratyesbek.e_commerce_android.services.productService.ProductService
 import com.beratyesbek.e_commerce_android.utilities.response.ListResponseModel
 import com.beratyesbek.e_commerce_android.utilities.response.ResponseModel
 import com.beratyesbek.e_commerce_android.utilities.sharedPreferences.CustomSharedPreferences
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-open class ProductViewModel(application: Application) : BaseViewModel(application) {
+@HiltViewModel
+open class ProductViewModel @Inject constructor(
+    application: Application,
+    private val productService : IProductService,
+    private val cartSummaryService : ICartSummaryService
+
+) : BaseViewModel(application) {
 
     val productDtoList = MutableLiveData<List<ProductDto>>()
     val cartSummaryList = MutableLiveData<List<CartSummary>>()
-    private val productManager = ProductManager()
-    private val cartSummaryService = CartSummaryService()
+
     private val disposable = CompositeDisposable()
     private val customSharedPreferences = CustomSharedPreferences(application)
 
@@ -69,7 +78,7 @@ open class ProductViewModel(application: Application) : BaseViewModel(applicatio
 
     fun getAllProductDetail() {
         disposable.add(
-            productManager.getAllProductDetail()
+            productService.getAllProductDetail()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<ListResponseModel<ProductDto>>() {

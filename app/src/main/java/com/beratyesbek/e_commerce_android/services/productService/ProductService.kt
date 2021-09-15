@@ -8,7 +8,7 @@ import com.beratyesbek.e_commerce_android.utilities.response.ResponseModel
 import com.beratyesbek.e_commerce_android.utilities.response.SingleResponseModel
 import io.reactivex.Single
 
-open class ProductManager : IProductService {
+open class ProductService : IProductService {
 
 
     private val api = Api.api<IProductService, Product>()

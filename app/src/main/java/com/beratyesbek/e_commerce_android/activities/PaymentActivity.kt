@@ -17,12 +17,13 @@ import com.beratyesbek.e_commerce_android.fragments.DatePickerFragment
 import com.beratyesbek.e_commerce_android.models.Payment
 import com.beratyesbek.e_commerce_android.models.dtos.CartSummaryDto
 import com.beratyesbek.e_commerce_android.mvvm.PaymentViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.sql.SQLSyntaxErrorException
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import kotlin.collections.ArrayList
 
-
+@AndroidEntryPoint
 class PaymentActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
     private val cartSummaryList = ArrayList<CartSummaryDto>()

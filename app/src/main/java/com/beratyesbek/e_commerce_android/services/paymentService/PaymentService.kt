@@ -7,9 +7,10 @@ import com.beratyesbek.e_commerce_android.utilities.response.ResponseModel
 import com.beratyesbek.e_commerce_android.utilities.response.SingleResponseModel
 import io.reactivex.Single
 
-class PaymentManager : IPaymentService {
+class PaymentService : IPaymentService {
 
     private val api = Api.api<IPaymentService, Payment>()
+
     override fun add(entity: ArrayList<Payment>): Single<ResponseModel> {
         return api.add(entity)
     }

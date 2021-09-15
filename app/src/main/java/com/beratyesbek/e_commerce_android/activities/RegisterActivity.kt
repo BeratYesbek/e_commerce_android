@@ -13,11 +13,13 @@ import com.beratyesbek.e_commerce_android.mvvm.RegisterViewModel
 import com.beratyesbek.e_commerce_android.services.authService.AuthService
 import com.beratyesbek.e_commerce_android.utilities.response.SingleResponseModel
 import com.beratyesbek.e_commerce_android.utilities.sharedPreferences.CustomSharedPreferences
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
+@AndroidEntryPoint
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var dataBinding: ActivityRegisterBinding

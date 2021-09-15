@@ -16,7 +16,9 @@ import com.beratyesbek.e_commerce_android.models.Product
 import com.beratyesbek.e_commerce_android.models.dtos.ProductDto
 import com.beratyesbek.e_commerce_android.mvvm.ProductDetailViewModel
 import com.beratyesbek.e_commerce_android.utilities.OnPassData
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProductDetailFragment(private val productDto : ProductDto,private val onPassData: OnPassData<CartSummary>) : Fragment() {
     private lateinit var dataBinding: FragmentProductDetailBinding
     private val viewModel : ProductDetailViewModel by viewModels()
